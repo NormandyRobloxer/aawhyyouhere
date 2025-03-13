@@ -1,0 +1,365 @@
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local UICorner = Instance.new("UICorner")
+local silentaim = Instance.new("TextButton")
+local autoclick = Instance.new("TextButton")
+local esp = Instance.new("TextButton")
+local TextLabel_2 = Instance.new("TextLabel")
+local TextLabel_3 = Instance.new("TextLabel")
+local TextLabel_4 = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.DisplayOrder = 999999999
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.319727898, 0, 0.364406794, 0)
+Frame.Size = UDim2.new(0, 295, 0, 169)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Size = UDim2.new(0, 295, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Rivals"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+UICorner.Parent = Frame
+
+silentaim.Name = "silentaim"
+silentaim.Parent = Frame
+silentaim.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+silentaim.BorderColor3 = Color3.fromRGB(0, 0, 0)
+silentaim.BorderSizePixel = 0
+silentaim.Position = UDim2.new(0.0677966103, 0, 0.388703644, 0)
+silentaim.Size = UDim2.new(0, 25, 0, 25)
+silentaim.Font = Enum.Font.SourceSans
+silentaim.Text = ""
+silentaim.TextColor3 = Color3.fromRGB(0, 0, 0)
+silentaim.TextSize = 14.000
+
+autoclick.Name = "autoclick"
+autoclick.Parent = Frame
+autoclick.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+autoclick.BorderColor3 = Color3.fromRGB(0, 0, 0)
+autoclick.BorderSizePixel = 0
+autoclick.Position = UDim2.new(0.0677966103, 0, 0.609290719, 0)
+autoclick.Size = UDim2.new(0, 25, 0, 25)
+autoclick.Font = Enum.Font.SourceSans
+autoclick.Text = ""
+autoclick.TextColor3 = Color3.fromRGB(0, 0, 0)
+autoclick.TextSize = 14.000
+
+esp.Name = "esp"
+esp.Parent = Frame
+esp.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+esp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+esp.BorderSizePixel = 0
+esp.Position = UDim2.new(0.0677966103, 0, 0.828712285, 0)
+esp.Size = UDim2.new(0, 25, 0, 25)
+esp.Font = Enum.Font.SourceSans
+esp.Text = ""
+esp.TextColor3 = Color3.fromRGB(0, 0, 0)
+esp.TextSize = 14.000
+
+TextLabel_2.Parent = Frame
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0.183050841, 0, 0.388703436, 0)
+TextLabel_2.Size = UDim2.new(0, 231, 0, 25)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "Silent Aim"
+TextLabel_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextWrapped = true
+
+TextLabel_3.Parent = Frame
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.BackgroundTransparency = 1.000
+TextLabel_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_3.BorderSizePixel = 0
+TextLabel_3.Position = UDim2.new(0.183050841, 0, 0.606390476, 0)
+TextLabel_3.Size = UDim2.new(0, 231, 0, 25)
+TextLabel_3.Font = Enum.Font.SourceSans
+TextLabel_3.Text = "Auto Click (Hold right click)"
+TextLabel_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_3.TextScaled = true
+TextLabel_3.TextSize = 14.000
+TextLabel_3.TextWrapped = true
+
+TextLabel_4.Parent = Frame
+TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.BackgroundTransparency = 1.000
+TextLabel_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_4.BorderSizePixel = 0
+TextLabel_4.Position = UDim2.new(0.183050841, 0, 0.824077606, 0)
+TextLabel_4.Size = UDim2.new(0, 231, 0, 25)
+TextLabel_4.Font = Enum.Font.SourceSans
+TextLabel_4.Text = "ESP"
+TextLabel_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_4.TextScaled = true
+TextLabel_4.TextSize = 14.000
+TextLabel_4.TextWrapped = true
+
+-- Scripts:
+
+local script = Instance.new('LocalScript', Frame)
+
+local UIS = game:GetService('UserInputService')
+local frame = script.Parent
+
+local dragToggle = nil
+local dragSpeed = 0.2
+local dragStart = nil
+local startPos = nil
+
+local silentOn = false
+local autoOn = false
+local espOn = false
+local hit = false
+
+local player = game:GetService("Players").LocalPlayer
+local uis = game:GetService("UserInputService")
+local mouse = player:GetMouse()
+local camera = game.Workspace.CurrentCamera
+local originalPosition = camera.CFrame
+
+local fovCircle     = Drawing.new("Circle")
+fovCircle.Visible   = true
+fovCircle.Thickness = 1
+fovCircle.Transparency = 1
+fovCircle.Color     = Color3.fromRGB(0, 0, 255)
+fovCircle.Filled    = false
+fovCircle.Radius = getgenv().fovCircleSize
+
+local function updateInput(input)
+    local delta = input.Position - dragStart
+    local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+end
+
+frame.InputBegan:Connect(function(input)
+    if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+        dragToggle = true
+        dragStart = input.Position
+        startPos = frame.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragToggle = false
+            end
+        end)
+    end
+end)
+
+UIS.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        if dragToggle then
+            updateInput(input)
+        end
+    end
+end)
+
+frame.silentaim.MouseButton1Click:Connect(function()
+    if silentOn then
+        silentOn = false
+        frame.silentaim.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    else
+        silentOn = true
+        frame.silentaim.BackgroundColor3 = Color3.fromRGB(255, 100, 100)
+    end
+end)
+
+frame.autoclick.MouseButton1Click:Connect(function()
+    if autoOn then
+        autoOn = false
+        frame.autoclick.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    else
+        autoOn = true
+        frame.autoclick.BackgroundColor3 = Color3.fromRGB(255, 100, 100)
+    end
+end)
+
+local Players = game:GetService("Players")
+
+local function createESP(player)
+    if player == Players.LocalPlayer then return end
+
+    local function addESP(character)
+        local head = character:WaitForChild("Head", 5)
+        if not head then return end
+
+        if head:FindFirstChild("ESP") then
+            head:FindFirstChild("ESP"):Destroy()
+        end
+
+        if espOn then
+            local billboard = Instance.new("BillboardGui")
+            billboard.Name = "ESP"
+            billboard.Size = UDim2.new(3, 0, 6, 0)
+            billboard.StudsOffset = Vector3.new(0, -2, 0)
+            billboard.AlwaysOnTop = true
+            billboard.Adornee = head
+            billboard.Parent = head
+
+            local frame = Instance.new("Frame")
+            frame.Size = UDim2.new(1, 0, 1, 0)
+            frame.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+            frame.BackgroundTransparency = 0.5
+            frame.Parent = billboard
+
+            local label = Instance.new("TextLabel")
+            label.Size = UDim2.new(1, 0, 1, 0)
+            label.BackgroundTransparency = 1
+            label.Text = player.Name
+            label.TextColor3 = Color3.fromRGB(255, 255, 255)
+            label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+            label.TextStrokeTransparency = 0.5
+            label.TextScaled = true
+            label.Font = Enum.Font.GothamBold
+            label.Parent = frame
+        end
+    end
+
+    if player.Character then
+        addESP(player.Character)
+    end
+
+    player.CharacterAdded:Connect(addESP)
+end
+
+for _, player in pairs(Players:GetPlayers()) do
+    createESP(player)
+end
+
+Players.PlayerAdded:Connect(createESP)
+
+local function toggleESP()
+    espOn = not espOn
+
+    for _, player in pairs(Players:GetPlayers()) do
+        if player.Character and player ~= Players.LocalPlayer then
+            local head = player.Character:FindFirstChild("Head")
+            if head then
+                local existingESP = head:FindFirstChild("ESP")
+                if existingESP then
+                    existingESP:Destroy()
+                end
+                if espOn then
+                    createESP(player)
+                end
+            end
+        end
+    end
+
+    if espOn then
+        frame.esp.BackgroundColor3 = Color3.fromRGB(255, 100, 100)
+    else
+        frame.esp.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    end
+end
+
+frame.esp.MouseButton1Click:Connect(toggleESP)
+
+
+local function updateFOV()
+    fovCircle.Position = Vector2.new(mouse.X, mouse.Y + 55)
+    if not silentOn then
+        fovCircle.Transparency = 0
+    else
+        fovCircle.Transparency = 1
+    end
+end
+
+game:GetService("RunService").RenderStepped:Connect(updateFOV)
+
+local function getClosestPlayer()
+    local closestPlayer = nil
+    local shortestDistance = math.huge
+
+    for _, otherPlayer in pairs(game:GetService("Players"):GetPlayers()) do
+        if otherPlayer ~= player and otherPlayer.Character then
+            local targetPart = otherPlayer.Character:FindFirstChild("Head")
+            if targetPart then
+                local targetPos, onScreen = camera:WorldToViewportPoint(targetPart.Position)
+                if onScreen then
+                    local screenPos = Vector2.new(targetPos.X, targetPos.Y)
+                    local distanceFromCursor = (screenPos - Vector2.new(mouse.X, mouse.Y)).Magnitude
+                    if distanceFromCursor < shortestDistance then
+                        closestPlayer = otherPlayer
+                        shortestDistance = distanceFromCursor
+                    end
+                end
+            end
+        end
+    end
+
+    return closestPlayer
+end
+
+mouse.Button1Down:Connect(function()
+    if silentOn then
+        originalPosition = camera.CFrame
+        local closestPlayer = getClosestPlayer()
+        if closestPlayer then
+            if math.random(1, 100) < getgenv().htp then
+                hit = true
+            else
+                hit = false
+            end
+            if math.random(1, 100) < getgenv().hsp then
+                targetPart = closestPlayer.Character:FindFirstChild("Head")
+            else
+                targetPart = closestPlayer.Character:FindFirstChild("HumanoidRootPart")
+            end
+			targetPart = closestPlayer.Character:FindFirstChild("Head")
+            if targetPart and hit then
+                local targetPosition = targetPart.Position
+                local currentPosition = camera.CFrame.Position
+                camera.CFrame = CFrame.new(currentPosition, targetPosition)
+				--task.wait(tick())
+				game:GetService("RunService").RenderStepped:Wait()
+                camera.CFrame = originalPosition
+            end
+        end
+    end
+end)
+
+local autoEnabled = false
+
+uis.InputBegan:Connect(function(input, gameProcessed)
+	if gameProcessed then return end
+	if input.UserInputType == Enum.UserInputType.MouseButton2 then
+		autoEnabled = true
+	end
+end)
+
+uis.InputEnded:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton2 then
+		autoEnabled = false
+	end
+end)
+
+while true do
+	if autoEnabled and autoOn then
+		mouse1click()
+	end
+	wait(0.02)
+end
+
+print("Loaded")
